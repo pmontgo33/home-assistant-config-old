@@ -1,0 +1,35 @@
+#################################################################
+## Automation
+#################################################################
+
+  - alias: Front Lights ON at sunset
+    initial_state: True
+    hide_entity: False
+    trigger:
+      platform: sun
+      event: sunset
+    action:
+      service: switch.turn_on
+      entity_id: switch.front_lights
+  - alias: Front Lights OFF at sunrise
+    initial_state: True
+    hide_entity: False
+    trigger:
+      platform: sun
+      event: sunrise
+    action:
+      service: switch.turn_off
+      entity_id: switch.front_lights
+
+  - alias: Turn on Deck Light with Driveway Light
+    trigger:
+      - platform: state
+        entity_id: switch.driveway
+        to: 'on'
+    condition:
+      condition: state
+      entity_id: switch.deck_light
+      state: 'off'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.timed_deck_light

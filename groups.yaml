@@ -1,0 +1,80 @@
+#################################################################
+## Groups
+#################################################################
+
+  ### DOWNSTAIRS VIEW ###
+  downstairs:
+    name: Downstairs
+    view: yes
+    entities:
+      - group.downstairs_lights
+      - group.downstairs_climate
+      - group.downstairs_automation
+  
+  
+  ### CARDS ###
+
+  downstairs_lights:
+    name: Lights
+    entities:
+      - switch.living_room_lights
+  downstairs_climate:
+    name: Climate
+    entities:
+      - climate.downstairs
+  downstairs_automation:
+    name: Automation
+    entities:
+      - automation.downstairs_home
+      - automation.downstairs_away
+ 
+  ### UPSTAIRS VIEW ###
+  upstairs:
+    name: Upstairs
+    view: yes
+    entities:
+      - group.upstairs_lights
+      - group.upstairs_climate
+      - automation.humidifier_on_for_bed
+      - automation.humidifier_off_for_bed
+      - media_player.montycast
+  
+  ### CARDS ###
+
+  upstairs_lights:
+    name: Lights & Fans
+    entities:
+      - switch.bedroom_light
+      - light.bedroom_fan
+  upstairs_climate:
+    name: Climate
+    entities:
+      - climate.home_upstairs_thermostat
+      - switch.humidifier
+  
+  ### OUTSIDE VIEW ###
+  outside:
+    name: Outside
+    view: yes
+    entities:
+      - sun.sun
+      - group.outside_lights
+      - automation.front_lights_on_at_sunset
+      - automation.front_lights_off_at_sunrise
+  
+  ### CARDS ###
+
+  outside_lights:
+    name: Lights
+    entities:
+      - switch.front_lights
+      - switch.deck_light
+      - switch.driveway
+  
+  ### DEVICES VIEW ###
+  devices:
+    name: Devices
+    view: yes
+    entities:
+      - device_tracker.patphone_patphone
+      - device_tracker.linaphone_linaphone

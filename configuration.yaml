@@ -1,0 +1,92 @@
+#################################################################
+## Configuration
+#################################################################
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 53
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret api_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  - platform: yr
+  
+  - platform: template
+    sensors:
+      upstairs_away_mode:
+        entity_id: climate.home_upstairs_thermostat
+        friendly_name: Upstairs Away
+        value_template: "{{ is_state_attr('climate.home_upstairs_thermostat', 'away_mode', 'on') }}"
+
+# Text to speech
+tts:
+  platform: google
+
+### Nest Config ###
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+### Wink Config ###
+wink:
+  email: !secret email
+  password: !secret wink_password
+
+### Device Tracking ###
+device_tracker:
+  - platform: owntracks
+
+  
+#################################################################
+## Includes
+#################################################################
+
+mqtt: !include mqtt.yaml
+zone: !include zones.yaml
+input_slider: !include input_sliders.yaml
+#automation: !include automation.yaml
+automation: !include_dir_merge_list automation
+group: !include groups.yaml
+script: !include scripts.yaml

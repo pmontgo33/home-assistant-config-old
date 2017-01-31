@@ -1,0 +1,27 @@
+#################################################################
+## Scripts
+#################################################################
+
+  timed_deck_light:
+    alias: "Turn on deck light and set timer"
+    sequence:
+      # Cancel ev. old timers
+      - service: script.turn_off
+        data:
+           entity_id: script.timer_off
+      - service: switch.turn_on
+        data:
+          entity_id: switch.deck_light
+      # Set new timer
+      - service: script.turn_on
+        data:
+          entity_id: script.timer_off
+
+  timer_off:
+    alias: "Turn off deck light after 5 minutes"
+    sequence:
+      - delay:
+          minutes: 5
+      - service: switch.turn_off
+        data:
+          entity_id: switch.deck_light
