@@ -50,16 +50,8 @@ logbook:
 sun:
 
 # Weather Prediction
-sensor:
-  - platform: yr
-  
-  - platform: template
-    sensors:
-      upstairs_away_mode:
-        entity_id: climate.home_upstairs_thermostat
-        friendly_name: Upstairs Away
-        value_template: "{{ is_state_attr('climate.home_upstairs_thermostat', 'away_mode', 'on') }}"
-
+sensor: !include sensors.yaml
+        
 # Text to speech
 tts:
   platform: google
@@ -68,6 +60,15 @@ tts:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
+  sensors:
+    monitored_conditions:
+      - 'humidity'
+      - 'co_status'
+      - 'smoke_status'
+      - 'batter_health'
+  binary_sensors:
+    monitored_conditions:
+      - 'fan'
 
 ### Wink Config ###
 wink:
@@ -78,15 +79,19 @@ wink:
 device_tracker:
   - platform: owntracks
 
-  
+### Input Boolean
+input_boolean:
+  sleep_mode:
+    name: Sleep Mode
+    icon: mdi:sleep
+    
 #################################################################
 ## Includes
 #################################################################
 
 mqtt: !include mqtt.yaml
 zone: !include zones.yaml
-input_slider: !include input_sliders.yaml
-#automation: !include automation.yaml
+#input_slider: !include input_sliders.yaml
 automation: !include_dir_merge_list automation
 group: !include groups.yaml
 script: !include scripts.yaml

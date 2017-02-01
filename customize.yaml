@@ -3,10 +3,7 @@
 #################################################################
 
     # Only the 'entity_id' is required.  All other options are optional.
-    climate.upstairs:
-      hidden: True
-    climate.home_upstairs_thermostat:
-      friendly_name: Upstairs
+      
     switch.humidifier:
       friendly_name: Bedroom Humidifier
       icon: mdi:water
@@ -22,17 +19,25 @@
       icon: mdi:fan
     switch.driveway:
       icon: mdi:car
+    binary_sensor.upstairs_thermostat_fan:
+      friendly_name: Upstairs Fan
+    sensor.upstairs_thermostat_humidity:
+      friendly_name: Upstairs Humidity
+    sensor.3rd_floor_nest_protect_co_status:
+      friendly_name: Nest Protect CO
+    sensor.3rd_floor_nest_protect_smoke_status:
+      friendly_name: Nest Protect Smoke
     
     ### Hide the Backend Variables ###
-    input_slider.downstairs_heat_home:
-      hidden: True
-    input_slider.downstairs_heat_away:
-      hidden: True
-    input_slider.downstairs_heat_sleep:
-      hidden: True
-    input_slider.downstairs_cool_home:
-      hidden: True
-    input_slider.downstairs_cool_away:
-      hidden: True
-    input_slider.downstairs_cool_sleep:
-      hidden: True
+    # input_slider.downstairs_heat_home:
+      # hidden: True
+    # input_slider.downstairs_heat_away:
+      # hidden: True
+    # input_slider.downstairs_heat_sleep:
+      # hidden: True
+    # input_slider.downstairs_cool_home:
+      # hidden: True
+    # input_slider.downstairs_cool_away:
+      # hidden: True
+    # input_slider.downstairs_cool_sleep:
+      # hidden: True
