@@ -19,14 +19,18 @@
       icon: mdi:fan
     switch.driveway:
       icon: mdi:car
-    binary_sensor.upstairs_thermostat_fan:
-      friendly_name: Upstairs Fan
     sensor.upstairs_thermostat_humidity:
       friendly_name: Upstairs Humidity
+      icon: mdi:water-percent
     sensor.3rd_floor_nest_protect_co_status:
       friendly_name: Nest Protect CO
+      icon: mdi:nest-protect
     sensor.3rd_floor_nest_protect_smoke_status:
       friendly_name: Nest Protect Smoke
+      icon: mdi:nest-protect
+    sensor.3rd_floor_nest_protect_battery_health:
+      friendly_name: Nest Protect Battery
+      icon: mdi:battery
     
     ### Hide the Backend Variables ###
     # input_slider.downstairs_heat_home:

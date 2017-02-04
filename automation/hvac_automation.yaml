@@ -38,7 +38,23 @@
           {% else %}
             {{ float(states.sensor.dstairs_home_set_point.state) }}
           {% endif %}
-          
+
+  - alias: Leave Work or Staten Island
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.patphone_patphone, device_tracker.linaphone_linaphone
+        zone: zone.work
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.patphone_patphone, device_tracker.linaphone_linaphone
+        zone: zone.staten_island
+        event: leave
+    action:
+      service: climate.set_away_mode
+      data:
+        entity_id: climate.upstairs
+        away_mode: false
+    
   # - alias: Downstairs Away Climate
     # trigger:
       # platform: state

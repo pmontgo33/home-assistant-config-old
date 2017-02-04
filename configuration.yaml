@@ -65,10 +65,10 @@ nest:
       - 'humidity'
       - 'co_status'
       - 'smoke_status'
-      - 'batter_health'
+      - 'battery_health'
   binary_sensors:
     monitored_conditions:
-      - 'fan'
+      #None
 
 ### Wink Config ###
 wink:
