@@ -6,8 +6,21 @@
     initial_state: True
     hide_entity: False
     trigger:
-      platform: time
-      after: '21:00:00'
+      - platform: time
+        after: '21:00:00'
+      - platform: state
+        entity_id: sensor.away_mode
+        state: 'Home'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.away_mode
+          state: 'Home'
+        - condition: time
+          after: '21:00:00'
+        - condition: template
+          value_template: "{{ is_state_attr('climate.upstairs', 'operation_mode', 'heat') }}"
     action:
       service: switch.turn_on
       entity_id: switch.humidifier
@@ -27,7 +40,7 @@
       - platform: state
         entity_id: input_boolean.sleep_mode
       - platform: state
-        entity_id: sensor.away_mode
+        entity_id: input_boolean.away_mode
     action:
       service: climate.set_temperature
       entity_id: climate.downstairs
@@ -42,18 +55,41 @@
   - alias: Leave Work or Staten Island
     trigger:
       - platform: zone
-        entity_id: device_tracker.patphone_patphone, device_tracker.linaphone_linaphone
+        entity_id: device_tracker.patphone_patphone
         zone: zone.work
         event: leave
       - platform: zone
-        entity_id: device_tracker.patphone_patphone, device_tracker.linaphone_linaphone
+        entity_id: device_tracker.patphone_patphone
         zone: zone.staten_island
         event: leave
+      - platform: zone
+        entity_id: device_tracker.linaphone_linaphone
+        zone: zone.work
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.linaphone_linaphone
+        zone: zone.staten_island
+        event: leave
+    condition:
+      condition: or
+      conditions:
+        - condition: zone
+          entity_id: device_tracker.patphone_patphone
+          zone: zone.leave_work
+        - condition: zone
+          entity_id: device_tracker.patphone_patphone
+          zone: zone.leave_staten_island
+        - condition: zone
+          entity_id: device_tracker.linaphone_linaphone
+          zone: zone.leave_work
+        - condition: zone
+          entity_id: device_tracker.linaphone_linaphone
+          zone: zone.leave_staten_island
     action:
-      service: climate.set_away_mode
+      service: climate.set_hold_mode
       data:
         entity_id: climate.upstairs
-        away_mode: false
+        hold_mode: 'home'
     
   # - alias: Downstairs Away Climate
     # trigger:

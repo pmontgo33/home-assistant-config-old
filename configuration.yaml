@@ -78,12 +78,17 @@ wink:
 ### Device Tracking ###
 device_tracker:
   - platform: owntracks
+  - platform: tplink
+    host: !secret tplink_ip
+    username: !secret tplink_username
+    password: !secret tplink_password
+    consider_home: 180
 
-### Input Boolean
-input_boolean:
-  sleep_mode:
-    name: Sleep Mode
-    icon: mdi:sleep
+# notify:
+  # - name: html5
+    # platform: html5
+    # gcm_api_key: !secret html5_server_key
+    # gcm_sender_id: !secret html5_sender_id
     
 #################################################################
 ## Includes
@@ -95,3 +100,4 @@ zone: !include zones.yaml
 automation: !include_dir_merge_list automation
 group: !include groups.yaml
 script: !include scripts.yaml
+input_boolean: !include input_booleans.yaml

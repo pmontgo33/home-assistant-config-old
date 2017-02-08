@@ -39,6 +39,20 @@
       - sensor.3rd_floor_nest_protect_smoke_status
       - sensor.3rd_floor_nest_protect_co_status
       - sensor.3rd_floor_nest_protect_battery_health
+      
+  weather:
+    name: Weather
+    entities:
+      - sensor.pws_alerts
+      - sensor.pws_elevation
+      - sensor.pws_feelslike_f
+      - sensor.pws_heat_index_f
+      - sensor.pws_location
+      - sensor.pws_precip_today_in
+      - sensor.pws_relative_humidity
+      - sensor.pws_temp_f
+      - sensor.pws_weather
+      - sensor.pws_wind_mph
   
   ### DOWNSTAIRS VIEW ###
   downstairs:
@@ -76,3 +90,11 @@
       - device_tracker.patphone_patphone
       - device_tracker.linaphone_linaphone
       - sensor.someone_home
+
+  ### WEATHER VIEW ###
+  weather_view:
+    name: Weather
+    view: yes
+    entities:
+      - group.weather
+      

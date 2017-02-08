@@ -1,0 +1,37 @@
+#################################################################
+## Away Mode
+#################################################################
+
+  - alias: Away When No One Home and Nest Eco
+    trigger:
+      - platform: state
+        entity_id: sensor.upstairs_away_mode
+        state: 'true'
+      - platform: state
+        entity_id: sensor.someone_home
+        state: 'false'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.upstairs_away_mode
+          state: 'true'
+        - condition: state
+          entity_id: sensor.someone_home
+          state: 'false'
+    action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.away_mode
+  
+  - alias: Away Off When Home
+    trigger:
+      - platform: state
+        entity_id: sensor.upstairs_away_mode
+        state: 'false'
+      - platform: state
+        entity_id: sensor.someone_home
+        state: 'true'
+    action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.away_mode
+      

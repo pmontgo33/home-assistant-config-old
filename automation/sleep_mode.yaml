@@ -4,8 +4,14 @@
 
   - alias: Sleep Mode ON
     trigger:
-      platform: time
+      - platform: time
+        after: '22:30:00'
+      - platform: event
+        event_type: homeassistant_start
+    condition:
+      condition: time
       after: '22:30:00'
+      before: '4:15:00'
     action:
       service: input_boolean.turn_on
       entity_id: input_boolean.sleep_mode
