@@ -4,6 +4,13 @@
 
   ### CARDS ###
   
+  modes:
+    name: Modes
+    control: hidden
+    entities:
+      - input_boolean.away_mode
+      - input_boolean.sleep_mode
+
   downstairs_lights:
     name: Downstairs Lights
     entities:
@@ -23,11 +30,13 @@
   
   downstairs_climate:
     name: Downstairs Climate
+    control: hidden
     entities:
       - climate.downstairs
   
   upstairs_climate:
     name: Upstairs Climate
+    control: hidden
     entities:
       - climate.upstairs
       - light.bedroom_fan
@@ -40,6 +49,14 @@
       - sensor.3rd_floor_nest_protect_co_status
       - sensor.3rd_floor_nest_protect_battery_health
       
+  travel_times:
+    name: Travel Times
+    entities:
+      - sensor.pat_to_home
+      - sensor.lina_to_home
+      - sensor.home_to_staten_island
+      - sensor.home_to_city
+  
   weather:
     name: Weather
     entities:
@@ -83,13 +100,14 @@
       - group.outside_lights
     
   ### DEVICES VIEW ###
-  devices:
-    name: Devices
+  locations:
+    name: Locations
     view: yes
     entities:
       - device_tracker.patphone_patphone
       - device_tracker.linaphone_linaphone
       - sensor.someone_home
+      - group.travel_times
 
   ### WEATHER VIEW ###
   weather_view:

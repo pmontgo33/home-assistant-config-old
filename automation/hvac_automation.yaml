@@ -86,10 +86,13 @@
           entity_id: device_tracker.linaphone_linaphone
           zone: zone.leave_staten_island
     action:
-      service: climate.set_hold_mode
-      data:
-        entity_id: climate.upstairs
-        hold_mode: 'home'
+      - service: climate.set_hold_mode
+        data:
+          entity_id: climate.upstairs
+          hold_mode: 'home'
+      - service: notify.html5
+        data:
+          message: "Coming home, preparing house."
     
   # - alias: Downstairs Away Climate
     # trigger:

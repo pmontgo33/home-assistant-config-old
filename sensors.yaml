@@ -3,7 +3,8 @@
 #################################################################
 
 #  - platform: yr
-  
+  - platform: pi_hole
+ 
   - platform: template
     sensors:
     
@@ -68,5 +69,35 @@
       - temp_f
       - weather
       - wind_mph
-      
+  
+  ### GOOGLE TRAVEL TIMES ###
+  
+  - platform: google_travel_time
+    name: Pat to Home
+    api_key: AIzaSyCNRZv1UvQO6PH7ZoXQCZy6qluDz9EwC4E
+    origin: device_tracker.patphone_patphone
+    destination: zone.home
+  
+  - platform: google_travel_time
+    name: Lina to Home
+    api_key: AIzaSyCNRZv1UvQO6PH7ZoXQCZy6qluDz9EwC4E
+    origin: device_tracker.linaphone_linaphone
+    destination: zone.home
+  
+  - platform: google_travel_time
+    name: Home To Staten Island
+    api_key: AIzaSyCNRZv1UvQO6PH7ZoXQCZy6qluDz9EwC4E
+    origin: zone.home
+    destination: zone.staten_island
+    
+  - platform: google_travel_time
+    name: Home To City
+    api_key: AIzaSyCNRZv1UvQO6PH7ZoXQCZy6qluDz9EwC4E
+    origin: zone.home
+    destination: 39.952501, -75.158069
+    transit_mode: 'transit'
+
+  - platform: usps
+    username: !secret usps_username
+    password: !secret usps_password
       

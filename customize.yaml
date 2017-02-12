@@ -31,6 +31,14 @@
     sensor.3rd_floor_nest_protect_battery_health:
       friendly_name: Nest Protect Battery
       icon: mdi:battery
+    sensor.home_to_staten_island:
+      icon: mdi:car
+    sensor.home_to_city:
+      icon: mdi:train
+    sensor.pat_to_home:
+      icon: mdi:car
+    sensor.lina_to_home:
+      icon: mdi:car
     
     ### Hide the Backend Variables ###
     # input_slider.downstairs_heat_home:

@@ -6,31 +6,34 @@
     trigger:
       - platform: state
         entity_id: sensor.upstairs_away_mode
-        state: 'true'
+        state: 'True'
       - platform: state
         entity_id: sensor.someone_home
-        state: 'false'
+        state: 'False'
     condition:
       condition: and
       conditions:
         - condition: state
           entity_id: sensor.upstairs_away_mode
-          state: 'true'
+          state: 'True'
         - condition: state
           entity_id: sensor.someone_home
-          state: 'false'
+          state: 'False'
     action:
-      service: input_boolean.turn_on
-      entity_id: input_boolean.away_mode
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.away_mode
+      - service: notify.html5
+        data:
+          message: "House in Away Mode"
   
   - alias: Away Off When Home
     trigger:
       - platform: state
         entity_id: sensor.upstairs_away_mode
-        state: 'false'
+        state: 'False'
       - platform: state
         entity_id: sensor.someone_home
-        state: 'true'
+        state: 'True'
     action:
       service: input_boolean.turn_off
       entity_id: input_boolean.away_mode
