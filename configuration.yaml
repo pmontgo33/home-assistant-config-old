@@ -48,7 +48,7 @@ logbook:
   exclude:
     domains:
       - group
-      - sensor.pi_hole
+      - sensor.pihole
 
 # Track the sun
 sun:
@@ -66,6 +66,11 @@ notify:
     gcm_api_key: !secret html5_server_key
     gcm_sender_id: !secret html5_sender_id
 
+### Z-WAVE CONFIG ###
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.2-py3.4-linux-armv7l.egg/config
+    
 ### Nest Config ###
 nest:
   client_id: !secret nest_client_id
@@ -84,6 +89,9 @@ nest:
 wink:
   email: !secret email
   password: !secret wink_password
+  
+ifttt:
+  key: UXMNDj585Tsf5ocvyClf3
 
 ### Device Tracking ###
 device_tracker:
