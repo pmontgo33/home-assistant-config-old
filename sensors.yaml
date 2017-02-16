@@ -95,7 +95,8 @@
     api_key: AIzaSyCNRZv1UvQO6PH7ZoXQCZy6qluDz9EwC4E
     origin: zone.home
     destination: 39.952501, -75.158069
-    transit_mode: 'transit'
+    options:
+      mode: transit
 
   - platform: usps
     username: !secret usps_username
