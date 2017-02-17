@@ -1,0 +1,55 @@
+#################################################################
+## Customize
+#################################################################
+
+    # Only the 'entity_id' is required.  All other options are optional.
+      
+    switch.humidifier:
+      friendly_name: Bedroom Humidifier
+      icon: mdi:water
+    switch.living_room_lights:
+      icon: mdi:lamp
+    switch.bedroom_light:
+      icon: mdi:lightbulb
+    switch.front_lights:
+      icon: mdi:lightbulb
+    switch.deck_light:
+      icon: mdi:lightbulb
+    light.bedroom_fan:
+      icon: mdi:fan
+    switch.driveway:
+      icon: mdi:car
+    sensor.upstairs_thermostat_humidity:
+      friendly_name: Upstairs Humidity
+      icon: mdi:water-percent
+    sensor.3rd_floor_nest_protect_co_status:
+      friendly_name: Nest Protect CO
+      icon: mdi:nest-protect
+    sensor.3rd_floor_nest_protect_smoke_status:
+      friendly_name: Nest Protect Smoke
+      icon: mdi:nest-protect
+    sensor.3rd_floor_nest_protect_battery_health:
+      friendly_name: Nest Protect Battery
+      icon: mdi:battery
+    sensor.home_to_staten_island:
+      icon: mdi:car
+    sensor.home_to_city:
+      icon: mdi:train
+    sensor.pat_to_home:
+      icon: mdi:car
+    sensor.lina_to_home:
+      icon: mdi:car
+    
+    ### Hide the Backend Variables ###
+    # input_slider.downstairs_heat_home:
+      # hidden: True
+    # input_slider.downstairs_heat_away:
+      # hidden: True
+    # input_slider.downstairs_heat_sleep:
+      # hidden: True
+    # input_slider.downstairs_cool_home:
+      # hidden: True
+    # input_slider.downstairs_cool_away:
+      # hidden: True
+    # input_slider.downstairs_cool_sleep:
+      # hidden: True

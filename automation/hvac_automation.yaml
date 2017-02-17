@@ -1,0 +1,211 @@
+#################################################################
+## HVAC Automation
+#################################################################
+
+  - alias: Humidifier ON for bed
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: time
+        after: '21:00:00'
+      - platform: state
+        entity_id: sensor.away_mode
+        state: 'Home'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: sensor.away_mode
+          state: 'Home'
+        - condition: time
+          after: '21:00:00'
+        - condition: template
+          value_template: "{{ is_state_attr('climate.upstairs', 'operation_mode', 'heat') }}"
+    action:
+      service: switch.turn_on
+      entity_id: switch.humidifier
+
+  - alias: Humidifier OFF for bed
+    initial_state: True
+    hide_entity: False
+    trigger:
+      platform: time
+      after: '04:00:00'
+    action:
+      service: switch.turn_off
+      entity_id: switch.humidifier
+      
+  - alias: Downstairs Away/Sleep Change
+    trigger:
+      - platform: state
+        entity_id: input_boolean.sleep_mode
+      - platform: state
+        entity_id: input_boolean.away_mode
+    action:
+      service: climate.set_temperature
+      entity_id: climate.downstairs
+      data_template:
+        temperature: >
+          {% if is_state('sensor.away_mode', 'Away') %}
+            {{ float(states.sensor.dstairs_away_set_point.state) }}
+          {% else %}
+            {{ float(states.sensor.dstairs_home_set_point.state) }}
+          {% endif %}
+
+  - alias: Leave Work or Staten Island
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.patphone_patphone
+        zone: zone.work
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.patphone_patphone
+        zone: zone.staten_island
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.linaphone_linaphone
+        zone: zone.work
+        event: leave
+      - platform: zone
+        entity_id: device_tracker.linaphone_linaphone
+        zone: zone.staten_island
+        event: leave
+    condition:
+      condition: or
+      conditions:
+        - condition: zone
+          entity_id: device_tracker.patphone_patphone
+          zone: zone.leave_work
+        - condition: zone
+          entity_id: device_tracker.patphone_patphone
+          zone: zone.leave_staten_island
+        - condition: zone
+          entity_id: device_tracker.linaphone_linaphone
+          zone: zone.leave_work
+        - condition: zone
+          entity_id: device_tracker.linaphone_linaphone
+          zone: zone.leave_staten_island
+    action:
+      - service: climate.set_away_mode
+        data:
+          entity_id: climate.upstairs
+          away_mode: 'off'
+      - service: notify.html5
+        data:
+          message: "Coming home, preparing house."
+    
+  # - alias: Downstairs Away Climate
+    # trigger:
+      # platform: state
+      # entity_id: sensor.upstairs_away_mode
+      # state: 'True'
+    # condition:
+      # condition: and
+      # conditions:
+        # - condition: state
+          # entity_id: 'device_tracker.patphone_patphone'
+          # state: 'not_home'
+        # - condition: template
+          # value_template: "{{ not is_state_attr('climate.downstairs', 'operation_mode', 'off') }}"
+    # action:
+      # service: climate.set_temperature
+      # entity_id: climate.downstairs
+      # data_template:
+        # temperature: >
+          # {% if is_state_attr('climate.downstairs', 'operation_mode', 'heat') %}
+          # {{float(states.input_slider.downstairs_heat_away.state)}}
+          # {% elif is_state_attr('climate.downstairs', 'operation_mode', 'cool') %}
+          # {{float(states.input_slider.downstairs_cool_away.state)}}
+          # {% endif %}
+
+  # - alias: Downstairs Home Climate
+    # trigger:
+      # platform: state
+      # entity_id: sensor.upstairs_away_mode
+      # state: 'False'
+    # condition:
+      # condition: template
+      # value_template: "{{ not is_state_attr('climate.downstairs', 'operation_mode', 'off') }}"
+    # action:
+      # service: climate.set_temperature
+      # entity_id: climate.downstairs
+      # data_template:
+        # temperature: >
+          # {% if is_state_attr('climate.downstairs', 'operation_mode', 'heat') %}
+          # {{float(states.input_slider.downstairs_heat_home.state)}}
+          # {% elif is_state_attr('climate.downstairs', 'operation_mode', 'cool') %}
+          # {{float(states.input_slider.downstairs_cool_home.state)}}
+          # {% endif %}
+
+  # - alias: Downstairs Sleep Climate
+    # trigger:
+      # platform: time
+      # after: '22:30:00'
+    # condition:
+      # condition: template
+      # value_template: "{{ not is_state_attr('climate.downstairs', 'operation_mode', 'off') }}"
+    # action:
+      # service: climate.set_temperature
+      # entity_id: climate.downstairs
+      # data_template:
+        # temperature: >
+          # {% if is_state_attr('climate.downstairs', 'operation_mode', 'heat') %}
+          # {{float(states.input_slider.downstairs_heat_sleep.state)}}
+          # {% elif is_state_attr('climate.downstairs', 'operation_mode', 'cool') %}
+          # {{float(states.input_slider.downstairs_cool_sleep.state)}}
+          # {% endif %}
+  
+  # - alias: Downstairs Wake Climate Work
+    # trigger:
+      # platform: time
+      # after: '4:15:00'
+    # condition:
+      # condition: and
+      # conditions:
+        # - condition: time
+          # weekday:
+            # - mon
+            # - tue
+            # - thu
+        # - condition: template
+          # value_template: "{{ not is_state_attr('climate.downstairs', 'operation_mode', 'off') }}"
+    # action:
+      # service: climate.set_temperature
+      # entity_id: climate.downstairs
+      # data_template:
+        # temperature: >
+          # {% if is_state_attr('climate.downstairs', 'operation_mode', 'heat') %}
+          # {{float(states.input_slider.downstairs_heat_home.state)}}
+          # {% elif is_state_attr('climate.downstairs', 'operation_mode', 'cool') %}
+          # {{float(states.input_slider.downstairs_cool_home.state)}}
+          # {% endif %}
+
+  # - alias: Downstairs Wake Climate No Work
+    # trigger:
+      # platform: time
+      # after: '7:00:00'
+    # condition:
+      # condition: and
+      # conditions:
+        # - condition: time
+          # weekday:
+            # - wed
+            # - fri
+            # - sat
+            # - sun
+        # - condition: template
+          # value_template: "{{ not is_state_attr('climate.downstairs', 'operation_mode', 'off') }}"
+    # action:
+      # service: climate.set_temperature
+      # entity_id: climate.downstairs
+      # data_template:
+        # temperature: >
+          # {% if is_state_attr('climate.downstairs', 'operation_mode', 'heat') %}
+          # {{float(states.input_slider.downstairs_heat_home.state)}}
+          # {% elif is_state_attr('climate.downstairs', 'operation_mode', 'cool') %}
+          # {{float(states.input_slider.downstairs_cool_home.state)}}
+          # {% endif %}
+          
+
+         
+      

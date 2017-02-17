@@ -1,0 +1,28 @@
+## Input Sliders
+#################################################################
+
+  ### BACKEND VARIABLES ###
+  # downstairs_heat_home:
+    # initial: 74
+    # min: 55
+    # max: 88
+  # downstairs_heat_away:
+    # initial: 61
+    # min: 55
+    # max: 88
+  # downstairs_heat_sleep:
+    # initial: 61
+    # min: 55
+    # max: 88
+  # downstairs_cool_home:
+    # initial: 77
+    # min: 55
+    # max: 88
+  # downstairs_cool_away:
+    # initial: 86
+    # min: 55
+    # max: 88
+  # downstairs_cool_sleep:
+    # initial: 86
+    # min: 55
+    # max: 88

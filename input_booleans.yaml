@@ -1,0 +1,11 @@
+#################################################################
+## Input Booleans
+#################################################################
+
+  sleep_mode:
+    name: Sleep Mode
+    icon: mdi:sleep
+  
+  away_mode:
+    name: Away Mode
+    icon: mdi:home-outline
