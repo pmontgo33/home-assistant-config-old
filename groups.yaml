@@ -14,18 +14,18 @@
   downstairs_lights:
     name: Downstairs Lights
     entities:
-      - switch.living_room_lights
+      - switch.living_room_lights_switch_2_0
   
   upstairs_lights:
     name: Upstairs Lights
     entities:
-      - switch.bedroom_light
+      - switch.bedroom_light_switch_7_0
 
   outside_lights:
     name: Outside Lights
     entities:
-      - switch.front_lights
-      - switch.deck_light
+      - switch.front_lights_switch_5_0
+      - switch.deck_light_switch_6_0
       - switch.driveway
   
   downstairs_climate:
@@ -39,8 +39,8 @@
     control: hidden
     entities:
       - climate.upstairs
-      - light.bedroom_fan
-      - switch.humidifier
+      - light.bedroom_fan_level_2_0
+      - switch.humidifier_switch_4_0
   
   nest_protect:
     name: Nest Protect
@@ -78,6 +78,7 @@
     entities:
       - group.downstairs_lights
       - group.downstairs_climate
+      - media_player.living_room_home
   
   ### UPSTAIRS VIEW ###
   upstairs:
@@ -87,7 +88,7 @@
       - group.upstairs_lights
       - group.upstairs_climate
       - group.nest_protect
-      - media_player.montycast
+      - media_player.bedroom_tv
       - sensor.upstairs_thermostat_humidity
 
   
@@ -108,6 +109,14 @@
       - device_tracker.linaphone_linaphone
       - sensor.someone_home
       - group.travel_times
+  
+  ### MEDIA VIEW ###
+  media_view:
+    name: Media
+    view: yes
+    entities:
+      - media_player.bedroom_tv
+      - media_player.living_room_home
 
   ### WEATHER VIEW ###
   weather_view:

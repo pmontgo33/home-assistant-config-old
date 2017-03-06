@@ -10,7 +10,7 @@
       event: sunset
     action:
       service: switch.turn_on
-      entity_id: switch.front_lights
+      entity_id: switch.front_lights_switch_5_0
   
   - alias: Front Lights OFF at sunrise
     initial_state: True
@@ -20,7 +20,7 @@
       event: sunrise
     action:
       service: switch.turn_off
-      entity_id: switch.front_lights
+      entity_id: switch.front_lights_switch_5_0
 
   - alias: Turn on Deck Light with Driveway Light
     trigger:
@@ -29,7 +29,7 @@
         to: 'on'
     condition:
       condition: state
-      entity_id: switch.deck_light
+      entity_id: switch.deck_light_switch_6_0
       state: 'off'
     action:
       service: homeassistant.turn_on

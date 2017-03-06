@@ -4,18 +4,23 @@
 
     # Only the 'entity_id' is required.  All other options are optional.
       
-    switch.humidifier:
+    switch.humidifier_switch_4_0:
       friendly_name: Bedroom Humidifier
       icon: mdi:water
-    switch.living_room_lights:
+    switch.living_room_lights_switch_2_0:
+      friendly_name: Living Room Lights
       icon: mdi:lamp
-    switch.bedroom_light:
+    switch.bedroom_light_switch_7_0:
+      friendly_name: Bedroom Light
       icon: mdi:lightbulb
-    switch.front_lights:
+    switch.front_lights_switch_5_0:
+      friendly_name: Front Lights
       icon: mdi:lightbulb
-    switch.deck_light:
+    switch.deck_light_switch_6_0:
+      friendly_name: Deck Light
       icon: mdi:lightbulb
-    light.bedroom_fan:
+    light.bedroom_fan_level_2_0:
+      friendly_name: Bedroom Fan
       icon: mdi:fan
     switch.driveway:
       icon: mdi:car

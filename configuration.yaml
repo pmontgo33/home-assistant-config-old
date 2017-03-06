@@ -29,7 +29,7 @@ http:
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+  base_url: !secret base_url
 
 # Checks for available updates
 updater:
@@ -71,6 +71,11 @@ notify:
   # client_id: home-assistant-1
   # username: pi
   # password: raspberry
+  
+### Z-WAVE CONFIG ###
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.2-py3.4-linux-armv7l.egg/config
 
 ### Nest Config ###
 nest:

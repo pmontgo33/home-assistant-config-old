@@ -23,7 +23,7 @@
           value_template: "{{ is_state_attr('climate.upstairs', 'operation_mode', 'heat') }}"
     action:
       service: switch.turn_on
-      entity_id: switch.humidifier
+      entity_id: switch.humidifier_switch_4_0
 
   - alias: Humidifier OFF for bed
     initial_state: True
@@ -33,7 +33,7 @@
       after: '04:00:00'
     action:
       service: switch.turn_off
-      entity_id: switch.humidifier
+      entity_id: switch.humidifier_switch_4_0
       
   - alias: Downstairs Away/Sleep Change
     trigger:
