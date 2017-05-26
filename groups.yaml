@@ -14,33 +14,37 @@
   downstairs_lights:
     name: Downstairs Lights
     entities:
-      - switch.living_room_lights
+      - switch.living_room_ligh_switch_3_0
   
   upstairs_lights:
     name: Upstairs Lights
     entities:
-      - switch.bedroom_light
+      - switch.bedroom_light_switch_4_0
 
   outside_lights:
     name: Outside Lights
     entities:
-      - switch.front_lights
-      - switch.deck_light
-      - switch.driveway
+      - switch.front_lights_switch_10_0
+      - switch.deck_light_switch_6_0
+      - switch.driveway_switch_11_0
   
   downstairs_climate:
     name: Downstairs Climate
     control: hidden
     entities:
-      - climate.downstairs
+      - climate.downstairs_heating_1_9_1
+      - climate.downstairs_cooling_1_9_2
+      - sensor.downstairs_relative_humidity_9_5_3
+      - sensor.downstairs_battery_level_9_0
   
   upstairs_climate:
     name: Upstairs Climate
     control: hidden
     entities:
       - climate.upstairs
-      - light.bedroom_fan
-      - switch.humidifier
+      - sensor.upstairs_thermostat_humidity
+      - light.bedroom_fan_level_8_0
+      - switch.humidifier_switch_5_0
   
   nest_protect:
     name: Nest Protect
@@ -74,26 +78,30 @@
   ### DOWNSTAIRS VIEW ###
   downstairs:
     name: Downstairs
+    icon: mdi:arrow-down
     view: yes
     entities:
       - group.downstairs_lights
       - group.downstairs_climate
+      - media_player.living_room_home
   
   ### UPSTAIRS VIEW ###
   upstairs:
     name: Upstairs
+    icon: mdi:arrow-up
     view: yes
     entities:
       - group.upstairs_lights
       - group.upstairs_climate
       - group.nest_protect
-      - media_player.montycast
+      - media_player.bedroom_tv
       - sensor.upstairs_thermostat_humidity
 
   
   ### OUTSIDE VIEW ###
   outside:
     name: Outside
+    icon: mdi:tree
     view: yes
     entities:
       - sun.sun
@@ -102,17 +110,45 @@
   ### DEVICES VIEW ###
   locations:
     name: Locations
+    icon: mdi:account-location
     view: yes
     entities:
       - device_tracker.patphone_patphone
       - device_tracker.linaphone_linaphone
       - sensor.someone_home
       - group.travel_times
+  
+  ### CAMERA VIEW ###
+  # camera_view:
+    # name: Cameras
+    # view: yes
+    # entities:
+      # - camera.gs5
+  
+  ### MEDIA VIEW ###
+  media_view:
+    name: Media
+    icon: mdi:cast
+    view: yes
+    entities:
+      - media_player.bedroom_tv
+      - media_player.living_room_home
 
   ### WEATHER VIEW ###
   weather_view:
     name: Weather
+    icon: mdi:weather-partlycloudy
     view: yes
     entities:
       - group.weather
+  
+  ### TOOLS VIEW ###
+  # tools_view:
+    # name: Tools
+    # icon: mdi:settings
+    # view: yes
+    # entities:
+      # - zwave
+      # - scripts
+      # - automations
       

@@ -4,33 +4,30 @@
 
     # Only the 'entity_id' is required.  All other options are optional.
       
-    switch.humidifier:
+    switch.humidifier_switch_5_0:
       friendly_name: Bedroom Humidifier
       icon: mdi:water
-    switch.living_room_lights:
+    switch.living_room_ligh_switch_3_0:
+      friendly_name: Living Room Lights
       icon: mdi:lamp
-    switch.bedroom_light:
+    switch.bedroom_light_switch_4_0:
+      friendly_name: Bedroom Light
       icon: mdi:lightbulb
-    switch.front_lights:
+    switch.front_lights_switch_10_0:
+      friendly_name: Front Lights
       icon: mdi:lightbulb
-    switch.deck_light:
+    switch.deck_light_switch_6_0:
+      friendly_name: Deck Light
       icon: mdi:lightbulb
-    light.bedroom_fan:
+    light.bedroom_fan_level_8_0:
+      friendly_name: Bedroom Fan
       icon: mdi:fan
-    switch.driveway:
+    switch.driveway_switch_11_0:
+      friendly_name: Driveway
       icon: mdi:car
     sensor.upstairs_thermostat_humidity:
       friendly_name: Upstairs Humidity
       icon: mdi:water-percent
-    sensor.3rd_floor_nest_protect_co_status:
-      friendly_name: Nest Protect CO
-      icon: mdi:nest-protect
-    sensor.3rd_floor_nest_protect_smoke_status:
-      friendly_name: Nest Protect Smoke
-      icon: mdi:nest-protect
-    sensor.3rd_floor_nest_protect_battery_health:
-      friendly_name: Nest Protect Battery
-      icon: mdi:battery
     sensor.home_to_staten_island:
       icon: mdi:car
     sensor.home_to_city:
@@ -39,6 +36,20 @@
       icon: mdi:car
     sensor.lina_to_home:
       icon: mdi:car
+    climate.downstairs_cooling_1_9_2:
+      friendly_name: Downstairs Cooling
+    climate.downstairs_heating_1_9_1:
+      friendly_name: Downstairs Heating
+    sensor.downstairs_battery_level_9_0:
+      friendly_name: Downstairs Battery
+      icon: mdi:battery-alert
+    sensor.downstairs_relative_humidity_9_5_3:
+      friendly_name: Downstairs Humidity
+      icon: mdi:water-percent
+    sensor.downstairs_temperature_9_1:
+      hidden: true
+    sensor.downstairs_temperature_9_1_2:
+      hidden: true
     
     ### Hide the Backend Variables ###
     # input_slider.downstairs_heat_home:

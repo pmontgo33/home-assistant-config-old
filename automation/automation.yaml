@@ -10,7 +10,7 @@
       event: sunset
     action:
       service: switch.turn_on
-      entity_id: switch.front_lights
+      entity_id: switch.front_lights_switch_10_0
   
   - alias: Front Lights OFF at sunrise
     initial_state: True
@@ -20,61 +20,25 @@
       event: sunrise
     action:
       service: switch.turn_off
-      entity_id: switch.front_lights
+      entity_id: switch.front_lights_switch_10_0
 
   - alias: Turn on Deck Light with Driveway Light
     trigger:
       - platform: state
-        entity_id: switch.driveway
+        entity_id: switch.driveway_switch_11_0
         to: 'on'
     condition:
       condition: state
-      entity_id: switch.deck_light
+      entity_id: switch.deck_light_switch_6_0
       state: 'off'
     action:
       service: homeassistant.turn_on
       entity_id: script.timed_deck_light
-      
-  - alias: Nest Protect Low Battery Alert
-    trigger:
-      - platform: template
-        value_template: >
-          {% if not is_state('sensor.3rd_floor_nest_protect_battery_health', 'Ok') %}true{% endif %}
-    action:
-      - service: notify.html5
-        data_template:
-          title: "Nest Protect Alert!"
-          message: >
-            Battery {{ states('sensor.3rd_floor_nest_protect_battery_health') }}
-
-  - alias: Nest Protect CO Alert
-    trigger:
-      - platform: template
-        value_template: >
-          {% if not is_state('sensor.3rd_floor_nest_protect_co_status', 'Ok') %}true{% endif %}
-    action:
-      - service: notify.html5
-        data_template:
-          title: "Nest Protect Alert!"
-          message: >
-            CO {{ states('sensor.3rd_floor_nest_protect_co_status') }}
-
-  - alias: Nest Protect Smoke Alert
-    trigger:
-      - platform: template
-        value_template: >
-          {% if not is_state('sensor.3rd_floor_nest_protect_smoke_status', 'Ok') %}true{% endif %}
-    action:
-      - service: notify.html5
-        data_template:
-          title: "Nest Protect Alert!"
-          message: >
-            Smoke {{ states('sensor.3rd_floor_nest_protect_smoke_status') }}
 
   # - alias: Test Notifications
     # trigger:
       # - platform: state
-        # entity_id: switch.living_room_lights
+        # entity_id: switch.front_lights
         # to: 'on'
     # action:
       # service: notify.html5
