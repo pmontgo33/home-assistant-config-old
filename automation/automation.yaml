@@ -29,11 +29,36 @@
         to: 'on'
     condition:
       condition: state
-      entity_id: switch.deck_light_switch_6_0
+      entity_id: switch.deck_light_switch_13_0
       state: 'off'
     action:
       service: homeassistant.turn_on
       entity_id: script.timed_deck_light
+  
+  - alias: Dim Master Bath Lights during Sleep
+    trigger:
+      - platform: state
+        entity_id: light.master_bathroom_light_level_12_0
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.sleep_mode
+          state: 'on'
+    action:
+      service: light.turn_on
+      data:
+        entity_id: light.master_bathroom_light_level_12_0
+        brightness: 20
+        
+  - alias: Jerky ON at 4am
+    trigger:
+      platform: time
+      at: '04:00:00'
+    action:
+      service: switch.turn_on
+      entity_id: switch.humidifier_switch_5_0
 
   # - alias: Test Notifications
     # trigger:

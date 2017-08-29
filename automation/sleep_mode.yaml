@@ -5,7 +5,7 @@
   - alias: Sleep Mode ON
     trigger:
       - platform: time
-        after: '22:30:00'
+        at: '22:30:00'
       - platform: event
         event_type: homeassistant_start
     condition:
@@ -19,7 +19,7 @@
   - alias: Sleep Mode OFF Work
     trigger:
       platform: time
-      after: '4:15:00'
+      at: '4:15:00'
     condition:
       condition: time
       weekday:
@@ -33,7 +33,7 @@
   - alias: Sleep Mode OFF No Work
     trigger:
       platform: time
-      after: '7:00:00'
+      at: '7:00:00'
     condition:
       condition: time
       weekday:

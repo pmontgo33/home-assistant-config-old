@@ -13,13 +13,16 @@
     switch.bedroom_light_switch_4_0:
       friendly_name: Bedroom Light
       icon: mdi:lightbulb
+    light.master_bathroom_light_level_12_0:
+      friendly_name: Master Bathroom Light
+      icon: mdi:lightbulb
     switch.front_lights_switch_10_0:
       friendly_name: Front Lights
       icon: mdi:lightbulb
-    switch.deck_light_switch_6_0:
+    switch.deck_light_switch_13_0:
       friendly_name: Deck Light
       icon: mdi:lightbulb
-    light.bedroom_fan_level_8_0:
+    fan.bedroom_fan_level_8_0:
       friendly_name: Bedroom Fan
       icon: mdi:fan
     switch.driveway_switch_11_0:
@@ -28,6 +31,8 @@
     sensor.upstairs_thermostat_humidity:
       friendly_name: Upstairs Humidity
       icon: mdi:water-percent
+    sensor.upstairs_thermostat_hvac_state:
+      friendly_name: Upstairs HVAC State
     sensor.home_to_staten_island:
       icon: mdi:car
     sensor.home_to_city:
@@ -50,6 +55,16 @@
       hidden: true
     sensor.downstairs_temperature_9_1_2:
       hidden: true
+    switch.front_strip:
+      icon: mdi:water-pump
+    switch.front_main:
+      icon: mdi:water-pump
+    switch.back_main:
+      icon: mdi:water-pump
+    switch.back_walkway:
+      icon: mdi:water-pump
+    switch.vegetable_garden:
+      icon: mdi:water-pump
     
     ### Hide the Backend Variables ###
     # input_slider.downstairs_heat_home:

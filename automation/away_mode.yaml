@@ -6,10 +6,10 @@
     trigger:
       - platform: state
         entity_id: sensor.upstairs_away_mode
-        state: 'True'
+        to: 'True'
       - platform: state
         entity_id: sensor.someone_home
-        state: 'False'
+        to: 'False'
     condition:
       condition: and
       conditions:
@@ -30,10 +30,10 @@
     trigger:
       - platform: state
         entity_id: sensor.upstairs_away_mode
-        state: 'False'
+        to: 'False'
       - platform: state
         entity_id: sensor.someone_home
-        state: 'True'
+        to: 'True'
     action:
       service: input_boolean.turn_off
       entity_id: input_boolean.away_mode

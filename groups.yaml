@@ -20,12 +20,13 @@
     name: Upstairs Lights
     entities:
       - switch.bedroom_light_switch_4_0
+      - light.master_bathroom_light_level_12_0
 
   outside_lights:
     name: Outside Lights
     entities:
       - switch.front_lights_switch_10_0
-      - switch.deck_light_switch_6_0
+      - switch.deck_light_switch_13_0
       - switch.driveway_switch_11_0
   
   downstairs_climate:
@@ -42,16 +43,33 @@
     control: hidden
     entities:
       - climate.upstairs
+      - sensor.upstairs_thermostat_hvac_state
       - sensor.upstairs_thermostat_humidity
-      - light.bedroom_fan_level_8_0
+      - fan.bedroom_fan_level_8_0
       - switch.humidifier_switch_5_0
   
-  nest_protect:
-    name: Nest Protect
+  irrigation:
+    name: Irrigation
+    control: hidden
     entities:
-      - sensor.3rd_floor_nest_protect_smoke_status
-      - sensor.3rd_floor_nest_protect_co_status
-      - sensor.3rd_floor_nest_protect_battery_health
+      - switch.front_strip
+      - switch.front_main
+      - switch.back_main
+      - switch.back_walkway
+      - switch.vegetable_garden
+  
+  multisensor:
+    name: Multisensor
+    entities:
+      - binary_sensor.multisensor_sensor_14_0
+      - sensor.multisensor_alarm_level_14_1
+      - sensor.multisensor_alarm_type_14_0
+      - sensor.multisensor_burglar_14_10
+      - sensor.multisensor_luminance_14_3
+      - sensor.multisensor_relative_humidity_14_5
+      - sensor.multisensor_sourcenodeid_14_2
+      - sensor.multisensor_temperature_14_1
+      - sensor.multisensor_ultraviolet_14_27
       
   travel_times:
     name: Travel Times
@@ -106,6 +124,7 @@
     entities:
       - sun.sun
       - group.outside_lights
+      - group.irrigation
     
   ### DEVICES VIEW ###
   locations:
@@ -133,6 +152,9 @@
     entities:
       - media_player.bedroom_tv
       - media_player.living_room_home
+      - media_player.living_room_tv
+      - media_player.alis_room
+      - media_player.all_speakers
 
   ### WEATHER VIEW ###
   weather_view:
